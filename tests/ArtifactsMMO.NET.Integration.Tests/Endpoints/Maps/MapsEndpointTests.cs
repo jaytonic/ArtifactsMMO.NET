@@ -52,7 +52,7 @@ namespace ArtifactsMMO.NET.Integration.Tests.Endpoints.Maps
         [Fact]
         public async Task GetMapByCoordinates_ShouldReturnExpectedData()
         {
-            var (result, error) = await _client.Maps.GetAsync(0,0);
+            var (result, error) = await _client.Maps.GetAsync(Layer.Overworld, 0, 0);
             Assert.NotNull(result);
         }
 

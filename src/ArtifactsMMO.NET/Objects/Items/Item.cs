@@ -1,6 +1,7 @@
 ﻿using ArtifactsMMO.NET.Enums;
 using ArtifactsMMO.NET.Objects.Crafting;
 using ArtifactsMMO.NET.Objects.Effects;
+using ArtifactsMMO.NET.Objects.Maps;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
@@ -14,7 +15,7 @@ namespace ArtifactsMMO.NET.Objects.Items
         internal Item() { }
 
         [JsonConstructor]
-        internal Item(string name, string code, int level, ItemType type, string subtype, string description,
+        internal Item(string name, string code, int level, ItemType type, string subtype, string description, IEnumerable<Condition> conditions, 
             bool tradeable, IReadOnlyCollection<SimpleEffect> effects, Craft craft)
         {
             Name = name;
@@ -23,6 +24,7 @@ namespace ArtifactsMMO.NET.Objects.Items
             Type = type;
             Subtype = subtype;
             Description = description;
+            Conditions = conditions;
             Effects = effects;
             Craft = craft;
             Tradeable = tradeable;
@@ -57,6 +59,7 @@ namespace ArtifactsMMO.NET.Objects.Items
         /// Item description.
         /// </summary>
         public string Description { get; }
+        public IEnumerable<Condition> Conditions { get; }
 
         /// <summary>
         /// Item tradeable status. A non-tradeable item cannot be exchanged or sold.
