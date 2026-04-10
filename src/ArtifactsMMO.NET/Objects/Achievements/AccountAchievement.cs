@@ -12,7 +12,7 @@ namespace ArtifactsMMO.NET.Objects.Achievements
         internal AccountAchievement() { }
 
         [JsonConstructor]
-        internal AccountAchievement(string name, string code, string description, int points, AchievementType type,
+        internal AccountAchievement(string name, string code, string description, int points, AchievementObjectiveType type,
             string target, int total, AchievementRewards rewards, int current, DateTimeOffset completedAt)
         {
             Name = name;
@@ -53,7 +53,7 @@ namespace ArtifactsMMO.NET.Objects.Achievements
         /// <summary>
         /// Type of achievement.
         /// </summary>
-        public AchievementType Type { get; }
+        public AchievementObjectiveType Type { get; }
 
         /// <summary>
         /// Target of the achievement.

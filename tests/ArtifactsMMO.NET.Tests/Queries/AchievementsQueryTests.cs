@@ -19,7 +19,7 @@ namespace ArtifactsMMO.NET.Tests.Queries
         [Fact]
         public void Constructor_WithParameters_CreatesInstance()
         {
-            var type = AchievementType.CombatKill;
+            var type = AchievementObjectiveType.CombatKill;
             int? page = 1;
             int? size = 10;
             var query = new AchievementsQuery(type, page, size);
@@ -40,7 +40,7 @@ namespace ArtifactsMMO.NET.Tests.Queries
         [Fact]
         public void ToQueryString_WithParameters_ReturnsQueryString()
         {
-            var type = AchievementType.Gathering;
+            var type = AchievementObjectiveType.Gathering;
             int? page = 1;
             int? size = 10;
             IQueryString query = new AchievementsQuery(type, page, size);
@@ -54,7 +54,7 @@ namespace ArtifactsMMO.NET.Tests.Queries
         [Fact]
         public void ToQueryString_WithSomeExpliciteParameters_ReturnsQueryString()
         {
-            var type = AchievementType.Gathering;
+            var type = AchievementObjectiveType.Gathering;
             int? size = 10;
             IQueryString query = new AchievementsQuery(type: type, size: size);
             var result = query.ToQueryString();

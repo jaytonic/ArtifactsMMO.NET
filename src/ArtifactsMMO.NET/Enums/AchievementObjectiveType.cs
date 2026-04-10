@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents the different types of achievements in the system.
     /// </summary>
-    public enum AchievementType
+    public enum AchievementObjectiveType
     {
         /// <summary>
         /// Achievement related to killing a combat-related enemy.
@@ -48,7 +48,17 @@
         /// <summary>
         /// ???
         /// </summary>
-        Use
+        Use,
+
+        /// <summary>
+        /// Buying an item
+        /// </summary>
+        NpcBuy,
+
+        /// <summary>
+        /// Selling an item
+        /// </summary>
+        NpcSell
     }
 
 }

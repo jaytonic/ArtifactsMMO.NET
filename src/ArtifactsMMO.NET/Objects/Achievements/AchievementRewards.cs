@@ -1,4 +1,6 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace ArtifactsMMO.NET.Objects.Achievements
 {
@@ -10,14 +12,16 @@ namespace ArtifactsMMO.NET.Objects.Achievements
         internal AchievementRewards() { }
 
         [JsonConstructor]
-        internal AchievementRewards(int gold)
+        internal AchievementRewards(int gold, IEnumerable<RewardItem> items)
         {
             Gold = gold;
+            Items = items;
         }
 
         /// <summary>
         /// Gold rewards.
         /// </summary>
         public int Gold { get; }
+        public IEnumerable<RewardItem> Items { get; }
     }
 }

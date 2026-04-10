@@ -1,4 +1,6 @@
 ﻿using ArtifactsMMO.NET.Enums;
+using System.Collections;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace ArtifactsMMO.NET.Objects.Achievements
@@ -11,16 +13,13 @@ namespace ArtifactsMMO.NET.Objects.Achievements
         internal Achievement() { }
 
         [JsonConstructor]
-        internal Achievement(string name, string code, string description, int points, AchievementType type,
-            string target, int total, AchievementRewards rewards)
+        internal Achievement(string name, string code, string description, int points, IEnumerable<AchievementObjective> objectives,  AchievementRewards rewards)
         {
             Name = name;
             Code = code;
             Description = description;
             Points = points;
-            Type = type;
-            Target = target;
-            Total = total;
+            Objectives = objectives;
             Rewards = rewards;
         }
 
@@ -46,21 +45,10 @@ namespace ArtifactsMMO.NET.Objects.Achievements
         /// Used for the leaderboard.
         /// </remarks>
         public int Points { get; }
-
         /// <summary>
-        /// Type of achievement.
+        /// List of objectives that must be completed
         /// </summary>
-        public AchievementType Type { get; }
-
-        /// <summary>
-        /// Target of the achievement.
-        /// </summary>
-        public string Target { get; }
-
-        /// <summary>
-        /// Total to do.
-        /// </summary>
-        public int Total { get; }
+        public IEnumerable<AchievementObjective> Objectives { get; }
 
         /// <summary>
         /// Rewards.
