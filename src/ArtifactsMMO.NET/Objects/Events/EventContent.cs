@@ -1,19 +1,20 @@
-﻿using System.Text.Json.Serialization;
+﻿using ArtifactsMMO.NET.Enums;
+using System.Text.Json.Serialization;
 
 namespace ArtifactsMMO.NET.Objects.Events
 {
     /// <summary>
     /// Content of the event
     /// </summary>
-    public class EventConten
+    public class EventContent
     {
-        internal EventConten()
+        internal EventContent()
         {
 
         }
 
         [JsonConstructor]
-        internal EventConten(string type, string code)
+        internal EventContent(MapContentType type, string code)
         {
             Type = type;
             Code = code;
@@ -22,7 +23,7 @@ namespace ArtifactsMMO.NET.Objects.Events
         /// <summary>
         /// Type of the event.
         /// </summary>
-        public string Type { get; }
+        public MapContentType Type { get; }
 
         /// <summary>
         /// Code content.

@@ -10,14 +10,19 @@ namespace ArtifactsMMO.NET.Objects.Maps
         internal Map() { }
 
         [JsonConstructor]
-        internal Map(string name, string skin, int x, int y, MapContent content)
+        internal Map(int mapId, string name, string skin, int x, int y, string layer, Access access, Interaction interactions)
         {
+            MapId = mapId;
             Name = name;
             Skin = skin;
             X = x;
             Y = y;
-            Content = content;
+            Layer = layer;
+            Access = access;
+            Interactions = interactions;
         }
+
+        public int MapId { get; }
 
         /// <summary>
         /// Name of the map.
@@ -38,10 +43,8 @@ namespace ArtifactsMMO.NET.Objects.Maps
         /// Position Y of the map.
         /// </summary>
         public int Y { get; }
-
-        /// <summary>
-        /// Content of the map.
-        /// </summary>
-        public MapContent Content { get; }
+        public string Layer { get; }
+        public Access Access { get; }
+        public Interaction Interactions { get; }
     }
 }
