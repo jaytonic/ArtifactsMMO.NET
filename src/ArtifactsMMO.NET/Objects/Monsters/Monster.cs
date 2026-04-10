@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Text.Json.Serialization;
+﻿using ArtifactsMMO.NET.Enums;
 using ArtifactsMMO.NET.Objects.Effects;
 using ArtifactsMMO.NET.Objects.Loot;
+using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace ArtifactsMMO.NET.Objects.Monsters
 {
@@ -13,14 +14,15 @@ namespace ArtifactsMMO.NET.Objects.Monsters
         internal Monster() { }
 
         [JsonConstructor]
-        internal Monster(string name, string code, long level, long hp, long attackFire, long attackEarth,
+        internal Monster(string name, string code, long level, MonsterType type, long hp, long attackFire, long attackEarth,
             long attackWater, long attackAir, long resFire, long resEarth, long resWater, long resAir,
-            int criticalStrike, IReadOnlyCollection<SimpleEffect> effects,
+            int criticalStrike, int initiative, IReadOnlyCollection<SimpleEffect> effects,
             long minGold, long maxGold, IReadOnlyCollection<DropDetails> drops)
         {
             Name = name;
             Code = code;
             Level = level;
+            Type = type;
             Hp = hp;
             AttackFire = attackFire;
             AttackEarth = attackEarth;
@@ -31,6 +33,7 @@ namespace ArtifactsMMO.NET.Objects.Monsters
             ResWater = resWater;
             ResAir = resAir;
             CriticalStrike = criticalStrike;
+            Initiative = initiative;
             Effects = effects;
             MinGold = minGold;
             MaxGold = maxGold;
@@ -51,6 +54,7 @@ namespace ArtifactsMMO.NET.Objects.Monsters
         /// Monster level.
         /// </summary>
         public long Level { get; }
+        public MonsterType Type { get; }
 
         /// <summary>
         /// Monster hit points.
@@ -101,6 +105,7 @@ namespace ArtifactsMMO.NET.Objects.Monsters
         /// Monster % critical strike.
         /// </summary>
         public int CriticalStrike { get; }
+        public int Initiative { get; }
 
         /// <summary>
         /// List of effects.
