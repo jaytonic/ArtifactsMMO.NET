@@ -13,18 +13,20 @@ namespace ArtifactsMMO.NET.Objects.MyCharacter.Fight
         internal Fight() { }
 
         [JsonConstructor]
-        internal Fight(int xp, int gold, IReadOnlyCollection<Drop> drops, int turns,
+        internal Fight(int xp, int gold, IReadOnlyCollection<Drop> drops, int turns, string opponent,
             BlockedHits monsterBlockedHits, BlockedHits playerBlockedHits, IReadOnlyCollection<string> logs,
-            FightResult result)
+            FightResult result, IEnumerable<CharacterMultiFightResult> characters)
         {
             Xp = xp;
             Gold = gold;
             Drops = drops;
             Turns = turns;
+            Opponent = opponent;
             MonsterBlockedHits = monsterBlockedHits;
             PlayerBlockedHits = playerBlockedHits;
             Logs = logs;
             Result = result;
+            Characters = characters;
         }
 
         /// <summary>
@@ -46,6 +48,7 @@ namespace ArtifactsMMO.NET.Objects.MyCharacter.Fight
         /// Numbers of the turns of the combat.
         /// </summary>
         public int Turns { get; }
+        public string Opponent { get; }
 
         /// <summary>
         /// The amount of blocked hits by the monster.
@@ -66,5 +69,6 @@ namespace ArtifactsMMO.NET.Objects.MyCharacter.Fight
         /// The result of the fight.
         /// </summary>
         public FightResult Result { get; }
+        public IEnumerable<CharacterMultiFightResult> Characters { get; }
     }
 }

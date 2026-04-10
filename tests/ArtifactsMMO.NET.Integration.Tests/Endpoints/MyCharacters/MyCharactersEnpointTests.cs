@@ -32,7 +32,7 @@ namespace ArtifactsMMO.NET.Integration.Tests.Endpoints.MyCharacters
             if (error == GetCharacterError.CharacterNotFound)
             {
                 var (createdCharacter, createError) = await _client.Characters.CreateAsync(new CreateCharacterRequest(_characterTestFixture.CharacterName, SkinCode.Men1));
-                
+
                 Assert.Null(createError);
             }
         }
@@ -84,7 +84,7 @@ namespace ArtifactsMMO.NET.Integration.Tests.Endpoints.MyCharacters
         {
             var minLevelResourceNodes = await _client.Resources.GetAsync(new ResourcesQuery(maxLevel: 1, skill: GatheringSkill.Mining));
             var minLevelResourceNode = minLevelResourceNodes.Data.First();
-            
+
             var resourceMaps = await _client.Maps.GetAsync(new MapsQuery(contentCode: minLevelResourceNode.Code, contentType: MapContentType.Resource));
             var resourceMap = resourceMaps.Data.First();
 
@@ -125,7 +125,7 @@ namespace ArtifactsMMO.NET.Integration.Tests.Endpoints.MyCharacters
                 var fightData = await _client.MyCharacters.FightAsync(_characterTestFixture.CharacterName);
 
                 await WaitAsync(fightData.result.Cooldown.StartedAt, fightData.result.Cooldown.Expiration);
-                gold = fightData.result.Character.Gold;
+                gold = fightData.result.Characters.First().Gold;
             }
 
             var restData = await _client.MyCharacters.RestAsync(_characterTestFixture.CharacterName);
@@ -152,7 +152,7 @@ namespace ArtifactsMMO.NET.Integration.Tests.Endpoints.MyCharacters
             }
 
             var itemSlot = character.result.Inventory.First(slot => slot.Quantity > 0);
-            
+
             var deleteItemData = await _client.MyCharacters.DeleteItemAsync(_characterTestFixture.CharacterName,
                 new DeleteItemRequest(itemSlot.Code, 1));
 
@@ -233,8 +233,7 @@ namespace ArtifactsMMO.NET.Integration.Tests.Endpoints.MyCharacters
 
             var depositData = await _client.MyCharacters.DepositBankAsync(_characterTestFixture.CharacterName,
                 new DepositBankRequest(
-                    "cooked_gudgeon",
-                    1
+                    new Objects.Items.SimpleItem("cooked_gudgeon", 1)
                     ));
 
             await WaitAsync(depositData.result.Cooldown.StartedAt, depositData.result.Cooldown.Expiration);
@@ -246,8 +245,7 @@ namespace ArtifactsMMO.NET.Integration.Tests.Endpoints.MyCharacters
         {
             var withdrawData = await _client.MyCharacters.WithdrawBankAsync(_characterTestFixture.CharacterName,
              new WithdrawBankRequest(
-                 "cooked_gudgeon",
-                 1
+                    new Objects.Items.SimpleItem("cooked_gudgeon", 1)
                  ));
 
             await WaitAsync(withdrawData.result.Cooldown.StartedAt, withdrawData.result.Cooldown.Expiration);

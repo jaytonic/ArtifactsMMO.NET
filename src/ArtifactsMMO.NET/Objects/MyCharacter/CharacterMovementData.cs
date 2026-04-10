@@ -15,15 +15,17 @@ namespace ArtifactsMMO.NET.Objects.MyCharacter
         internal CharacterMovementData() { }
 
         [JsonConstructor]
-        internal CharacterMovementData(Cooldown cooldown, Map destination, Character character)
-            : base (cooldown, character)
+        internal CharacterMovementData(Cooldown cooldown, Map destination, Character character, int[][] path)
+            : base(cooldown, character)
         {
             Destination = destination;
+            Path = path;
         }
 
         /// <summary>
         /// Destination details.
         /// </summary>
         public Map Destination { get; }
+        public int[][] Path { get; }
     }
 }
