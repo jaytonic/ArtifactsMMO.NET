@@ -14,7 +14,7 @@ namespace ArtifactsMMO.NET.Objects.Events
         }
 
         [JsonConstructor]
-        internal EventContent(MapContentType type, string code)
+        internal EventContent(EventContentType type, string code)
         {
             Type = type;
             Code = code;
@@ -23,7 +23,7 @@ namespace ArtifactsMMO.NET.Objects.Events
         /// <summary>
         /// Type of the event.
         /// </summary>
-        public MapContentType Type { get; }
+        public EventContentType Type { get; }
 
         /// <summary>
         /// Code content.
