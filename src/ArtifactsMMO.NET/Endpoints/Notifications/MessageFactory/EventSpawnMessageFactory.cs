@@ -5,7 +5,7 @@ using System.Text.Json.Nodes;
 
 namespace ArtifactsMMO.NET.Endpoints.Notifications.MessageFactory
 {
-    internal class EventSpawnMessageFactory : IMessageFactory<ServerNotification>
+    internal class EventSpawnMessageFactory : IMessageFactory<EventSpawnNotification>
     {
         public bool IsApplicable(string messageText)
         {
@@ -13,7 +13,7 @@ namespace ArtifactsMMO.NET.Endpoints.Notifications.MessageFactory
             return jsonNode["type"]?.Deserialize<string>() == "event_spawn";
         }
 
-        public ServerNotification Deserialize(string messageText, JsonSerializerOptions jsonSerializerOptions)
+        public EventSpawnNotification Deserialize(string messageText, JsonSerializerOptions jsonSerializerOptions)
         {
             EventSpawnNotification notification = JsonSerializer.Deserialize<EventSpawnNotification>(messageText, jsonSerializerOptions);
             return notification;

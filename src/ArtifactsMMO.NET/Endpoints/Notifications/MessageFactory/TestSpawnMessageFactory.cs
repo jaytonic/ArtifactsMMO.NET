@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-
-using ArtifactsMMO.NET.Objects.Notifications;
+using ArtifactsMMO.NET.Objects.Notifications.TestNotification;
 using ArtifactsMMO.NET.WebSockets;
 
 namespace ArtifactsMMO.NET.Endpoints.Notifications.MessageFactory
 {
-    internal class TestSpawnMessageFactory : IMessageFactory<ServerNotification>
+    internal class TestSpawnMessageFactory : IMessageFactory<TestNotification>
     {
         public bool IsApplicable(string messageText)
         {
@@ -17,7 +16,7 @@ namespace ArtifactsMMO.NET.Endpoints.Notifications.MessageFactory
             return jsonNode["type"]?.Deserialize<string>() == "test";
         }
 
-        public ServerNotification Deserialize(string messageText, JsonSerializerOptions jsonSerializerOptions)
+        public TestNotification Deserialize(string messageText, JsonSerializerOptions jsonSerializerOptions)
         {
             TestNotification notification = JsonSerializer.Deserialize<TestNotification>(messageText, jsonSerializerOptions);
             return notification;

@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 namespace ArtifactsMMO.NET.Endpoints.Notifications.MessageFactory
 {
-    internal class NotificationMessageFactoryFactory : MessageFactoryFactory<ServerNotification>
+    internal class NotificationMessageFactoryFactory : MessageFactoryFactory<IServerRealTimeMessage>
     {
-        protected override IEnumerable<IMessageFactory<ServerNotification>> GetFactories()
+        protected override IEnumerable<IMessageFactory<IServerRealTimeMessage>> GetFactories()
         {
-            return new IMessageFactory<ServerNotification>[]
+            return new IMessageFactory<IServerRealTimeMessage>[]
             {
                 new EventSpawnMessageFactory(),
                 new EventRemovedMessageFactory(),

@@ -7,12 +7,8 @@ namespace ArtifactsMMO.NET.Objects.Notifications
     /// <summary>
     /// Notification about a new event
     /// </summary>
-    public class EventSpawnNotification : ServerNotification
+    public class EventSpawnNotification : ServerNotification<ActiveEvent>
     {
-        /// <summary>
-        /// The active event
-        /// </summary>
-        public ActiveEvent Data { get; }
 
         /// <summary>
         /// Construct a new event spawn notification
@@ -21,9 +17,8 @@ namespace ArtifactsMMO.NET.Objects.Notifications
         /// <param name="data">Active event</param>
         [JsonConstructor]
         public EventSpawnNotification(NotificationType type, ActiveEvent data)
-            : base(type)
+            : base(type, data)
         {
-            Data = data;
         }
     }
 }

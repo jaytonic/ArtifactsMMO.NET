@@ -7,12 +7,8 @@ namespace ArtifactsMMO.NET.Objects.Notifications
     /// <summary>
     /// Notification about a removed event
     /// </summary>
-    public class EventRemovedNotification : ServerNotification
+    public class EventRemovedNotification : ServerNotification<ActiveEvent>
     {
-        /// <summary>
-        /// The active event
-        /// </summary>
-        public ActiveEvent Data { get; }
 
         /// <summary>
         /// Construct a new event removed notification
@@ -21,9 +17,8 @@ namespace ArtifactsMMO.NET.Objects.Notifications
         /// <param name="data">Active event</param>
         [JsonConstructor]
         public EventRemovedNotification(NotificationType type, ActiveEvent data)
-            : base(type)
+            : base(type, data)
         {
-            Data = data;
         }
     }
 }

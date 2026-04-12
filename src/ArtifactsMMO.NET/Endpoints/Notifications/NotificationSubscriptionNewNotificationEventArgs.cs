@@ -1,4 +1,5 @@
 ﻿using ArtifactsMMO.NET.Objects.Notifications;
+using ArtifactsMMO.NET.WebSockets;
 using System;
 
 namespace ArtifactsMMO.NET.Endpoints.Notifications
@@ -8,7 +9,7 @@ namespace ArtifactsMMO.NET.Endpoints.Notifications
     /// </summary>
     public class NotificationSubscriptionNewNotificationEventArgs : EventArgs
     {
-        internal NotificationSubscriptionNewNotificationEventArgs(ServerNotification notification)
+        internal NotificationSubscriptionNewNotificationEventArgs(IServerRealTimeMessage notification)
         {
             Notification = notification;
         }
@@ -16,6 +17,6 @@ namespace ArtifactsMMO.NET.Endpoints.Notifications
         /// <summary>
         /// The notification of the server
         /// </summary>
-        public ServerNotification Notification { get; }
+        public IServerRealTimeMessage Notification { get; }
     }
 }

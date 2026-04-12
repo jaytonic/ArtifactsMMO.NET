@@ -5,7 +5,7 @@ using System.Text.Json.Nodes;
 
 namespace ArtifactsMMO.NET.Endpoints.Notifications.MessageFactory
 {
-    internal class AchievementUnlockMessageFactory : IMessageFactory<ServerNotification>
+    internal class AchievementUnlockMessageFactory : IMessageFactory<AchievementUnlockNotification>
     {
         public bool IsApplicable(string messageText)
         {
@@ -13,7 +13,7 @@ namespace ArtifactsMMO.NET.Endpoints.Notifications.MessageFactory
             return jsonNode["type"]?.Deserialize<string>() == "achievement_unlocked";
         }
 
-        public ServerNotification Deserialize(string messageText, JsonSerializerOptions jsonSerializerOptions)
+        public AchievementUnlockNotification Deserialize(string messageText, JsonSerializerOptions jsonSerializerOptions)
         {
             AchievementUnlockNotification notification = JsonSerializer.Deserialize<AchievementUnlockNotification>(messageText, jsonSerializerOptions);
             return notification;
