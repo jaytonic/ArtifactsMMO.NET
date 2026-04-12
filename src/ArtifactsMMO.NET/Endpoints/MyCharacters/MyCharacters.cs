@@ -120,16 +120,16 @@ namespace ArtifactsMMO.NET.Endpoints.MyCharacters
             return await PostAsync<BankExtensionTransaction, BuyBankExpansionError>($"my/{name}/action/bank/buy_expansion", null, cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task<(NpcMerchantTransaction result, NpcBuyItemError? error)> NpcBuyItemAsync(string name, CancellationToken cancellationToken = default)
+        public async Task<(NpcMerchantTransaction result, NpcBuyItemError? error)> NpcBuyItemAsync(string name, NpcBuyItemRequest request, CancellationToken cancellationToken = default)
         {
             _nameValidator.Validate(name);
-            return await PostAsync<NpcMerchantTransaction, NpcBuyItemError>($"my/{name}/action/npc/buy", null, cancellationToken).ConfigureAwait(false);
+            return await PostAsync<NpcMerchantTransaction, NpcBuyItemError>($"my/{name}/action/npc/buy", request, cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task<(NpcMerchantTransaction result, NpcSellItemError? error)> NpcSellItemAsync(string name, CancellationToken cancellationToken = default)
+        public async Task<(NpcMerchantTransaction result, NpcSellItemError? error)> NpcSellItemAsync(string name, NpcSellItemRequest request, CancellationToken cancellationToken = default)
         {
             _nameValidator.Validate(name);
-            return await PostAsync<NpcMerchantTransaction, NpcSellItemError>($"my/{name}/action/npc/sell", null, cancellationToken).ConfigureAwait(false);
+            return await PostAsync<NpcMerchantTransaction, NpcSellItemError>($"my/{name}/action/npc/sell", request, cancellationToken).ConfigureAwait(false);
         }
 
         public async Task<(TaskData result, AcceptNewTaskError? error)> AcceptNewTaskAsync(string name, CancellationToken cancellationToken = default)

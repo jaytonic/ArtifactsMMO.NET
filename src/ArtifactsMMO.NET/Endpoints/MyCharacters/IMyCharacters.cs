@@ -206,7 +206,7 @@ namespace ArtifactsMMO.NET.Endpoints.MyCharacters
         /// The task result contains a tuple with the <see cref="NpcMerchantTransaction"/>
         /// and an optional <see cref="NpcBuyItemError"/>.</returns>
         /// <exception cref="ApiException"></exception>
-        Task<(NpcMerchantTransaction result, NpcBuyItemError? error)> NpcBuyItemAsync(string name, CancellationToken cancellationToken = default);
+        Task<(NpcMerchantTransaction result, NpcBuyItemError? error)> NpcBuyItemAsync(string name, NpcBuyItemRequest request, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Sell an item from an NPC on the character's map.
@@ -217,7 +217,7 @@ namespace ArtifactsMMO.NET.Endpoints.MyCharacters
         /// The task result contains a tuple with the <see cref="NpcMerchantTransaction"/>
         /// and an optional <see cref="NpcSellItemError"/>.</returns>
         /// <exception cref="ApiException"></exception>
-        Task<(NpcMerchantTransaction result, NpcSellItemError? error)> NpcSellItemAsync(string name, CancellationToken cancellationToken = default);
+        Task<(NpcMerchantTransaction result, NpcSellItemError? error)> NpcSellItemAsync(string name, NpcSellItemRequest request, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Accepting a new task.
