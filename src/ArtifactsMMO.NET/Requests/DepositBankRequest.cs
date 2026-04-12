@@ -23,6 +23,7 @@ namespace ArtifactsMMO.NET.Requests
             Items = items;
             _validator.Validate(this);
         }
+        public DepositBankRequest(string code, int quantity) : this(new SimpleItem(code, quantity)) { }
 
         public IEnumerable<SimpleItem> Items { get; }
     }

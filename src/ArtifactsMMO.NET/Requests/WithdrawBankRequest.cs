@@ -22,6 +22,7 @@ namespace ArtifactsMMO.NET.Requests
 
             _validator.Validate(this);
         }
+        public WithdrawBankRequest(string code, int quantity) : this(new SimpleItem(code, quantity)) { }
 
         public SimpleItem[] Items { get; }
     }
