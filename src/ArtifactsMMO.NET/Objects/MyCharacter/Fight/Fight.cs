@@ -13,36 +13,15 @@ namespace ArtifactsMMO.NET.Objects.MyCharacter.Fight
         internal Fight() { }
 
         [JsonConstructor]
-        internal Fight(int xp, int gold, IReadOnlyCollection<Drop> drops, int turns, string opponent,
-            BlockedHits monsterBlockedHits, BlockedHits playerBlockedHits, IReadOnlyCollection<string> logs,
-            FightResult result, IEnumerable<CharacterMultiFightResult> characters)
+        internal Fight(FightResult result, int turns, string opponent, IReadOnlyCollection<string> logs,
+            IEnumerable<CharacterMultiFightResult> characters)
         {
-            Xp = xp;
-            Gold = gold;
-            Drops = drops;
             Turns = turns;
             Opponent = opponent;
-            MonsterBlockedHits = monsterBlockedHits;
-            PlayerBlockedHits = playerBlockedHits;
             Logs = logs;
             Result = result;
             Characters = characters;
         }
-
-        /// <summary>
-        /// The amount of xp gained by the fight.
-        /// </summary>
-        public int Xp { get; }
-
-        /// <summary>
-        /// The amount of gold gained by the fight.
-        /// </summary>
-        public int Gold { get; }
-
-        /// <summary>
-        /// The items dropped by the fight.
-        /// </summary>
-        public IReadOnlyCollection<Drop> Drops { get; }
 
         /// <summary>
         /// Numbers of the turns of the combat.
@@ -50,15 +29,6 @@ namespace ArtifactsMMO.NET.Objects.MyCharacter.Fight
         public int Turns { get; }
         public string Opponent { get; }
 
-        /// <summary>
-        /// The amount of blocked hits by the monster.
-        /// </summary>
-        public BlockedHits MonsterBlockedHits { get; }
-
-        /// <summary>
-        /// The amount of blocked hits by the player.
-        /// </summary>
-        public BlockedHits PlayerBlockedHits { get; }
 
         /// <summary>
         /// The fight logs.
