@@ -17,7 +17,6 @@ namespace ArtifactsMMO.NET.Queries
         /// </summary>
         public EffectsQuery(int? page, int? size) : base(page, size)
         {
-            HasParameters = false;
         }
 
         string IQueryString.ToQueryString()
