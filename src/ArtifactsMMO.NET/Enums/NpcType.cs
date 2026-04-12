@@ -9,5 +9,10 @@
         /// Merchant
         /// </summary>
         Merchant,
+
+        /// <summary>
+        /// Trader
+        /// </summary>
+        Trader,
     }
 }

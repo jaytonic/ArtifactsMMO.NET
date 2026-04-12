@@ -1,4 +1,5 @@
 ﻿using ArtifactsMMO.NET.Enums;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace ArtifactsMMO.NET.Objects.Npcs
@@ -11,12 +12,13 @@ namespace ArtifactsMMO.NET.Objects.Npcs
         internal Npc() { }
 
         [JsonConstructor]
-        internal Npc(string name, string code, string description, NpcType type)
+        internal Npc(string name, string code, string description, NpcType type, IEnumerable<NpcItem> items)
         {
             Name = name;
             Code = code;
             Description = description;
             Type = type;
+            Items = items;
         }
 
         /// <summary>
@@ -38,5 +40,6 @@ namespace ArtifactsMMO.NET.Objects.Npcs
         /// Type of the NPC.
         /// </summary>
         public NpcType Type {get;}
+        public IEnumerable<NpcItem> Items { get; }
     }
 }
