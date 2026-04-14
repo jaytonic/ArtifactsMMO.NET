@@ -6,16 +6,16 @@ namespace ArtifactsMMO.NET.Validators
 {
     internal class NpcBuyItemRequestValidator : IValidator<NpcBuyItemRequest>
     {
-        public void Validate(NpcBuyItemRequest buyItemRequest)
+        public void Validate(NpcBuyItemRequest request)
         {
-            if (!AlphaNumericUnderscoreHyphenValidator.IsValid(buyItemRequest.Code))
+            if (!AlphaNumericUnderscoreHyphenValidator.IsValid(request.Code))
             {
                 throw new ItemCodeHasDisallowedCharacters();
             }
 
-            if (!QuantityValidator.IsValid(buyItemRequest.Quantity))
+            if (!NpcQuantityValidator.IsValid(request.Quantity))
             {
-                throw new DisallowedQuantity();
+                throw new DisallowedNpcQuantity();
             }
         }
     }
