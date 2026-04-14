@@ -28,7 +28,7 @@ namespace ArtifactsMMO.NET.Endpoints.Npcs
 
         public async Task<PagedResponse<Npc>> GetAsync(NpcsQuery query, CancellationToken cancellationToken = default)
         {
-            return await GetAsync<Npc>(_resource, query, cancellationToken).ConfigureAwait(false);
+            return await GetAsync<Npc>($"{_resource}/details", query, cancellationToken).ConfigureAwait(false);
         }
 
         public async Task<(Npc result, GetNpcError? error)> GetAsync(string code, CancellationToken cancellationToken = default)
@@ -38,7 +38,7 @@ namespace ArtifactsMMO.NET.Endpoints.Npcs
 
         public async Task<(PagedResponse<NpcItem> result, GetNpcError? error)> GetNpcItemsAsync(string code, CancellationToken cancellationToken = default)
         {
-            return await GetAsync<NpcItem, GetNpcError>($"{_resource}/{code}/items", null, cancellationToken).ConfigureAwait(false);
+            return await GetAsync<NpcItem, GetNpcError>($"{_resource}/items/{code}", null, cancellationToken).ConfigureAwait(false);
         }
     }
 }

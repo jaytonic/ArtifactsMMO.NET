@@ -1,4 +1,5 @@
-﻿using ArtifactsMMO.NET.Objects.Notifications;
+﻿using ArtifactsMMO.NET.Enums;
+using ArtifactsMMO.NET.Objects.Notifications;
 using System.Text.Json.Serialization;
 
 namespace ArtifactsMMO.NET.WebSockets

@@ -29,7 +29,7 @@ namespace ArtifactsMMO.NET.Queries
         /// <param name="page">The page number for pagination. Optional.</param>
         /// <param name="size">The number of items per page. Optional.</param>
         /// <exception cref="InvalidQueryParameter"></exception>
-        public AccountAchievementsQuery(bool? completed = false, AchievementType? type = null,
+        public AccountAchievementsQuery(bool? completed = false, AchievementObjectiveType? type = null,
             int? page = null, int? size = null)
             : base(page, size)
         {
@@ -43,9 +43,9 @@ namespace ArtifactsMMO.NET.Queries
         public bool? Completed { get; }
 
         /// <summary>
-        /// Optional type of achievements to filter by (see <see cref="AchievementType" /> for possible values).
+        /// Optional type of achievements to filter by (see <see cref="AchievementObjectiveType" /> for possible values).
         /// </summary>
-        public AchievementType? Type { get; }
+        public AchievementObjectiveType? Type { get; }
 
         string IQueryString.ToQueryString()
         {

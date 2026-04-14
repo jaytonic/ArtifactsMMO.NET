@@ -1,4 +1,5 @@
 ﻿using ArtifactsMMO.NET.Exceptions;
+using ArtifactsMMO.NET.Objects.Items;
 using ArtifactsMMO.NET.Validators;
 
 namespace ArtifactsMMO.NET.Requests
@@ -13,26 +14,16 @@ namespace ArtifactsMMO.NET.Requests
         /// <summary>
         /// Initializes a new instance of the <see cref="WithdrawBankRequest"/> class.
         /// </summary>
-        /// <param name="code">The code representing the item to be withdrawn from the bank.</param>
-        /// <param name="quantity">The number of items to withdraw.</param>
         /// <exception cref="ItemCodeHasDisallowedCharacters">Thrown when <paramref name="code"/> contains not allowed characters. Should match pattern ^[a-zA-Z0-9_-]+$</exception>
         /// <exception cref="DisallowedQuantity">Thrown when <paramref name="quantity"/> is less then 1.</exception>
-        public WithdrawBankRequest(string code, int quantity)
+        public WithdrawBankRequest(params SimpleItem[] items)
         {
-            Code = code;
-            Quantity = quantity;
+            Items = items;
 
             _validator.Validate(this);
         }
+        public WithdrawBankRequest(string code, int quantity) : this(new SimpleItem(code, quantity)) { }
 
-        /// <summary>
-        /// Item code.
-        /// </summary>
-        public string Code { get; }
-
-        /// <summary>
-        /// Item quantity.
-        /// </summary>
-        public int Quantity { get; }
+        public SimpleItem[] Items { get; }
     }
 }

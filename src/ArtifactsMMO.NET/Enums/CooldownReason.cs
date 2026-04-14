@@ -48,12 +48,12 @@
         /// <summary>
         /// Cooldown due to depositing items in the bank.
         /// </summary>
-        Deposit,
+        DepositItem,
 
         /// <summary>
         /// Cooldown due to withdrawing items from the bank.
         /// </summary>
-        Withdraw,
+        WithdrawItem,
 
         /// <summary>
         /// Cooldown due to depositing gold in the bank.

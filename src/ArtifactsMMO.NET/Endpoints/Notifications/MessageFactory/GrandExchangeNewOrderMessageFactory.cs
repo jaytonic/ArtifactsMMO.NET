@@ -5,7 +5,7 @@ using System.Text.Json.Nodes;
 
 namespace ArtifactsMMO.NET.Endpoints.Notifications.MessageFactory
 {
-    internal class GrandExchangeNewOrderMessageFactory : IMessageFactory<ServerNotification>
+    internal class GrandExchangeNewOrderMessageFactory : IMessageFactory<GrandExchangeNewOrderNotification>
     {
         public bool IsApplicable(string messageText)
         {
@@ -13,7 +13,7 @@ namespace ArtifactsMMO.NET.Endpoints.Notifications.MessageFactory
             return jsonNode["type"]?.Deserialize<string>() == "grandexchange_neworder";
         }
 
-        public ServerNotification Deserialize(string messageText, JsonSerializerOptions jsonSerializerOptions)
+        public GrandExchangeNewOrderNotification Deserialize(string messageText, JsonSerializerOptions jsonSerializerOptions)
         {
             GrandExchangeNewOrderNotification notification = JsonSerializer.Deserialize<GrandExchangeNewOrderNotification>(messageText, jsonSerializerOptions);
             return notification;

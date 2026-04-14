@@ -10,11 +10,19 @@ namespace ArtifactsMMO.NET.Objects.Events
         internal EventMap() { }
 
         [JsonConstructor]
-        internal EventMap(int x, int y)
+        internal EventMap(int mapId, int x, int y, string layer, string skin)
         {
+            MapId = mapId;
             X = x;
             Y = y;
+            Layer = layer;
+            Skin = skin;
         }
+
+        /// <summary>
+        /// ID of the map
+        /// </summary>
+        public int MapId { get; }
 
         /// <summary>
         /// Position X of the map.
@@ -25,5 +33,15 @@ namespace ArtifactsMMO.NET.Objects.Events
         /// Position Y of the map.
         /// </summary>
         public int Y { get; }
+
+        /// <summary>
+        /// Layer of the map
+        /// </summary>
+        public string Layer { get; }
+
+        /// <summary>
+        /// Skin of the map
+        /// </summary>
+        public string Skin { get; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using ArtifactsMMO.NET.Enums.ErrorCodes.Character;
+﻿using ArtifactsMMO.NET.Enums;
+using ArtifactsMMO.NET.Enums.ErrorCodes.Character;
 using ArtifactsMMO.NET.Internal;
 using ArtifactsMMO.NET.Objects;
 using ArtifactsMMO.NET.Objects.Maps;
@@ -23,9 +24,9 @@ namespace ArtifactsMMO.NET.Endpoints.Maps
         {
         }
 
-        public async Task<(Map result, GetMapError? error)> GetAsync(int x, int y, CancellationToken cancellationToken = default)
+        public async Task<(Map result, GetMapError? error)> GetAsync(Layer layer, int x, int y, CancellationToken cancellationToken = default)
         {
-            return await GetAsync<Map, GetMapError>($"{_resource}/{x}/{y}", cancellationToken).ConfigureAwait(false);
+            return await GetAsync<Map, GetMapError>($"{_resource}/{layer.ToString().ToLowerInvariant()}/{x}/{y}", cancellationToken).ConfigureAwait(false);
         }
 
         public async Task<PagedResponse<Map>> GetAsync(MapsQuery mapsQuery,

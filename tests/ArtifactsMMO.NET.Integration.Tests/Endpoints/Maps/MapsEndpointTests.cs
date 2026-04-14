@@ -35,7 +35,7 @@ namespace ArtifactsMMO.NET.Integration.Tests.Endpoints.Maps
             Assert.NotNull(result);
             Assert.True(result.Total > 0);
             Assert.NotNull(result.Data);
-            Assert.True(result.Data.All(x => x.Content.Type == MapContentType.Monster));
+            Assert.True(result.Data.All(x => x.Interactions.Content.Type == MapContentType.Monster));
         }
 
         [Fact]
@@ -46,13 +46,13 @@ namespace ArtifactsMMO.NET.Integration.Tests.Endpoints.Maps
             Assert.NotNull(result);
             Assert.True(result.Total > 0);
             Assert.NotNull(result.Data);
-            Assert.True(result.Data.All(x => x.Content.Type == MapContentType.Monster && x.Content.Code == contentCode));
+            Assert.True(result.Data.All(x => x.Interactions.Content.Type == MapContentType.Monster && x.Interactions.Content.Code == contentCode));
         }
 
         [Fact]
         public async Task GetMapByCoordinates_ShouldReturnExpectedData()
         {
-            var (result, error) = await _client.Maps.GetAsync(0,0);
+            var (result, error) = await _client.Maps.GetAsync(Layer.Overworld, 0, 0);
             Assert.NotNull(result);
         }
 

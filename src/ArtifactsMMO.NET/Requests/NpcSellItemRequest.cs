@@ -23,6 +23,7 @@ namespace ArtifactsMMO.NET.Requests
             Quantity = quantity;
             _validator.Validate(this);
         }
+
         /// <summary>
         /// Item code.
         /// </summary>

@@ -12,7 +12,7 @@ namespace ArtifactsMMO.NET.Objects.Events
 
         [JsonConstructor]
         internal Event(string code, string name, string skin, long duration, int rate,
-            EventConten content, IReadOnlyCollection<EventMap> maps)
+            EventContent content, IReadOnlyCollection<EventMap> maps)
         {
             Name = name;
             Duration = duration;
@@ -51,7 +51,7 @@ namespace ArtifactsMMO.NET.Objects.Events
         /// <summary>
         /// Content of the event.
         /// </summary>
-        public EventConten Content { get; }
+        public EventContent Content { get; }
 
         /// <summary>
         /// Map list of the event.

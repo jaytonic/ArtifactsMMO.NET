@@ -1,5 +1,7 @@
 ﻿using ArtifactsMMO.NET.Exceptions;
+using ArtifactsMMO.NET.Objects.Items;
 using ArtifactsMMO.NET.Validators;
+using System.Collections.Generic;
 
 namespace ArtifactsMMO.NET.Requests
 {
@@ -14,26 +16,15 @@ namespace ArtifactsMMO.NET.Requests
         /// <summary>
         /// Initializes a new instance of the <see cref="DepositBankRequest"/> class.
         /// </summary>
-        /// <param name="code">The code representing the item to be deposited in the bank.</param>
-        /// <param name="quantity">The number of items to deposit.</param>
         /// <exception cref="ItemCodeHasDisallowedCharacters">Thrown when <paramref name="code"/> contains not allowed characters. Should match pattern ^[a-zA-Z0-9_-]+$</exception>
         /// <exception cref="DisallowedQuantity">Thrown when <paramref name="quantity"/> is less then 1.</exception>
-        public DepositBankRequest(string code, int quantity)
+        public DepositBankRequest(params SimpleItem[] items)
         {
-            Code = code;
-            Quantity = quantity;
-
+            Items = items;
             _validator.Validate(this);
         }
+        public DepositBankRequest(string code, int quantity) : this(new SimpleItem(code, quantity)) { }
 
-        /// <summary>
-        /// Item code.
-        /// </summary>
-        public string Code { get; }
-
-        /// <summary>
-        /// Item quantity.
-        /// </summary>
-        public int Quantity { get; }
+        public IEnumerable<SimpleItem> Items { get; }
     }
 }

@@ -44,5 +44,10 @@ namespace ArtifactsMMO.NET.Objects.Effects
         /// Subtype of the effect.
         /// </summary>
         public EffectSubtype Subtype { get; }
+        public override string ToString()
+        {
+            return $"[{Code}] {Name}({Type}:{Subtype})";
+
+        }
     }
 }

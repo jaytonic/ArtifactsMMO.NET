@@ -13,7 +13,7 @@ namespace ArtifactsMMO.NET.Endpoints.Notifications
     /// <summary>
     /// Represent a notification endpoint
     /// </summary>
-    public class NotificationSubscription : RealTimeSubscription<ServerNotification>
+    public class NotificationSubscription : RealTimeSubscription<IServerRealTimeMessage>
     {
         private readonly IEnumerable<NotificationType> _notificationTypes;
         private readonly string _token;
@@ -42,7 +42,7 @@ namespace ArtifactsMMO.NET.Endpoints.Notifications
         }
 
         /// <inheritdoc />
-        protected override void HandleMessageReceived(ServerNotification message)
+        protected override void HandleMessageReceived(IServerRealTimeMessage message)
         {
             NewNotification?.Invoke(this, new NotificationSubscriptionNewNotificationEventArgs(message));
         }

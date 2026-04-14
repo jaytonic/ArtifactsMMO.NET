@@ -16,18 +16,18 @@ namespace ArtifactsMMO.NET.Objects.MyCharacter.Bank
         internal BankItemTransaction() { }
 
         [JsonConstructor]
-        internal BankItemTransaction(Cooldown cooldown, Item item, IReadOnlyCollection<SimpleItem> bank,
+        internal BankItemTransaction(Cooldown cooldown, IReadOnlyCollection<SimpleItem> items, IReadOnlyCollection<SimpleItem> bank,
             Character character)
             : base(cooldown, character)
         {
-            Item = item;
+            Items = items;
             Bank = bank;
         }
 
         /// <summary>
         /// Item details.
         /// </summary>
-        public Item Item { get; }
+        public IReadOnlyCollection<SimpleItem> Items { get; }
 
         /// <summary>
         /// Items in your banks.

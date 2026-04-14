@@ -69,7 +69,7 @@ namespace ArtifactsMMO.NET.Endpoints.MyCharacters
         public async Task<(BankItemTransaction result, DepositBankError? error)> DepositBankAsync(string name, DepositBankRequest depositBankRequest, CancellationToken cancellationToken = default)
         {
             _nameValidator.Validate(name);
-            return await PostAsync<BankItemTransaction, DepositBankError>($"my/{name}/action/bank/deposit", depositBankRequest, cancellationToken).ConfigureAwait(false);
+            return await PostAsync<BankItemTransaction, DepositBankError>($"my/{name}/action/bank/deposit/item", depositBankRequest.Items, cancellationToken).ConfigureAwait(false);
         }
 
         public async Task<(BankGoldTransaction result, DepositBankGoldError? error)> DepositBankGoldAsync(string name, DepositBankGoldRequest depositBankGoldRequest, CancellationToken cancellationToken = default)
@@ -87,7 +87,7 @@ namespace ArtifactsMMO.NET.Endpoints.MyCharacters
         public async Task<(BankItemTransaction result, WithdrawBankError? error)> WithdrawBankAsync(string name, WithdrawBankRequest withdrawBankRequest, CancellationToken cancellationToken = default)
         {
             _nameValidator.Validate(name);
-            return await PostAsync<BankItemTransaction, WithdrawBankError>($"my/{name}/action/bank/withdraw", withdrawBankRequest, cancellationToken).ConfigureAwait(false);
+            return await PostAsync<BankItemTransaction, WithdrawBankError>($"my/{name}/action/bank/withdraw/item", withdrawBankRequest.Items, cancellationToken).ConfigureAwait(false);
         }
 
         public async Task<(BankGoldTransaction result, WithdrawBankGoldError? error)> WithdrawBankGoldAsync(string name, WithdrawBankGoldRequest withdrawBankGoldRequest, CancellationToken cancellationToken = default)
@@ -105,7 +105,7 @@ namespace ArtifactsMMO.NET.Endpoints.MyCharacters
         public async Task<(GrandExchangeOrderTransaction result, GrandExchangeCreateSellOrderError? error)> GrandExchangeCreateSellOrderAsync(string name, GrandExchangeCreateSellOrderRequest grandExchangeCreateSellOrderRequest, CancellationToken cancellationToken = default)
         {
             _nameValidator.Validate(name);
-            return await PostAsync<GrandExchangeOrderTransaction, GrandExchangeCreateSellOrderError>($"my/{name}/action/grandexchange/sell", grandExchangeCreateSellOrderRequest, cancellationToken).ConfigureAwait(false);
+            return await PostAsync<GrandExchangeOrderTransaction, GrandExchangeCreateSellOrderError>($"my/{name}/action/grandexchange/create-sell-order", grandExchangeCreateSellOrderRequest, cancellationToken).ConfigureAwait(false);
         }
 
         public async Task<(GrandExchangeTransactionData result, GrandExchangeCancelSellOrderError? error)> GrandExchangeCancelSellOrderAsync(string name, GrandExchangeCancelSellOrderRequest grandExchangeCancelSellOrderRequest, CancellationToken cancellationToken = default)

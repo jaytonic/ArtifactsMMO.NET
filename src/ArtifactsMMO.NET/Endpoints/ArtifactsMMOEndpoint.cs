@@ -130,7 +130,7 @@ namespace ArtifactsMMO.NET.Endpoints
             return (result, errorCode);
         }
 
-        internal async Task<(T result, E? error)> PostAsync<T, E>(string resource, IRequest request, CancellationToken cancellationToken = default) where E : struct, Enum
+        internal async Task<(T result, E? error)> PostAsync<T, E>(string resource, object request, CancellationToken cancellationToken = default) where E : struct, Enum
         {
             var body = JsonSerializer.Serialize(request, _jsonSerializerOptions);
             using (var httpContent = new StringContent(body, Encoding.UTF8, "application/json"))

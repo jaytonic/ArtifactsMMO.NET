@@ -1,4 +1,5 @@
 ﻿using ArtifactsMMO.NET.Objects.Characters;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace ArtifactsMMO.NET.Objects.MyCharacter.Fight
@@ -9,13 +10,13 @@ namespace ArtifactsMMO.NET.Objects.MyCharacter.Fight
     /// <remarks>
     /// This class inherits from <see cref="ActionData"/>.
     /// </remarks>
-    public class CharacterFightData : ActionData
+    public class CharacterFightData : MultiCharacterActionData
     {
         internal CharacterFightData() { }
 
         [JsonConstructor]
-        internal CharacterFightData(Cooldown cooldown, Fight fight, Character character)
-            : base(cooldown, character)
+        internal CharacterFightData(Cooldown cooldown, Fight fight, IEnumerable<Character> characters)
+            : base(cooldown, characters)
         {
             Fight = fight;
         }

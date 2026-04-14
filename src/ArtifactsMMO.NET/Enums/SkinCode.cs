@@ -33,6 +33,8 @@
         /// <summary>
         /// Skin code for the third female character.
         /// </summary>
-        Women3
+        Women3,
+        Corrupted1,
+        Marauder1
     }
 }

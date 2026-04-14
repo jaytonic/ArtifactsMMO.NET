@@ -7,13 +7,8 @@ namespace ArtifactsMMO.NET.Objects.Notifications
     /// <summary> 
     /// Notification about a grand exchange sale
     /// </summary>
-    public class GrandExchangeSellNotification : ServerNotification
+    public class GrandExchangeSellNotification : ServerNotification<GrandExchangeOrderHistory>
     {
-        /// <summary>
-        /// The grand exchange sale
-        /// </summary>
-        public GrandExchangeOrderHistory Data { get; }
-
         /// <summary>
         /// Construct a new grand exchange sale
         /// </summary>
@@ -21,9 +16,8 @@ namespace ArtifactsMMO.NET.Objects.Notifications
         /// <param name="data">Thew new grand exchange order</param>
         [JsonConstructor]
         public GrandExchangeSellNotification(NotificationType type, GrandExchangeOrderHistory data)
-            : base(type)
+            : base(type,data)
         {
-            Data = data;
         }
     }
 }

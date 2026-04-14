@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using ArtifactsMMO.NET.Enums;
+using ArtifactsMMO.NET.Objects.Effects;
 using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
-using ArtifactsMMO.NET.Enums;
 
 namespace ArtifactsMMO.NET.Objects.Characters
 {
@@ -20,9 +21,9 @@ namespace ArtifactsMMO.NET.Objects.Characters
             int gearcraftingXp, int gearcraftingMaxXp, int jewelrycraftingLevel, int jewelrycraftingXp,
             int jewelrycraftingMaxXp, int cookingLevel, int cookingXp, int cookingMaxXp, int alchemyLevel,
             int alchemyXp, int alchemyMaxXp, int hp, int haste, string account, int criticalStrike, int wisdom,
-            int prospecting, int attackFire, int attackEarth, int attackWater,int attackAir, int dmg, int dmgFire,
-            int dmgEarth, int dmgWater, int dmgAir, int resFire,int resEarth, int resWater,
-            int resAir, int x, int y, int cooldown, DateTimeOffset? cooldownExpiration, string weaponSlot,
+            int prospecting, int initiative, int threat, int attackFire, int attackEarth, int attackWater, int attackAir, int dmg, int dmgFire,
+            int dmgEarth, int dmgWater, int dmgAir, int resFire, int resEarth, int resWater,
+            int resAir, IEnumerable<StorageEffect> effects, int x, int y, Layer layer, int mapId, int cooldown, DateTimeOffset? cooldownExpiration, string weaponSlot,
             string shieldSlot, string helmetSlot, string bodyArmorSlot, string legArmorSlot, string bootsSlot,
             string ring1Slot, string ring2Slot, string amuletSlot, string artifact1Slot, string artifact2Slot,
             string artifact3Slot, string utility1Slot, int utility1SlotQuantity, string utility2Slot,
@@ -67,6 +68,8 @@ namespace ArtifactsMMO.NET.Objects.Characters
             CriticalStrike = criticalStrike;
             Wisdom = wisdom;
             Prospecting = prospecting;
+            Initiative = initiative;
+            Threat = threat;
             AttackFire = attackFire;
             AttackEarth = attackEarth;
             AttackWater = attackWater;
@@ -80,8 +83,11 @@ namespace ArtifactsMMO.NET.Objects.Characters
             ResEarth = resEarth;
             ResWater = resWater;
             ResAir = resAir;
+            Effects = effects;
             X = x;
             Y = y;
+            Layer = layer;
+            MapId = mapId;
             Cooldown = cooldown;
             CooldownExpiration = cooldownExpiration;
             WeaponSlot = weaponSlot;
@@ -300,6 +306,8 @@ namespace ArtifactsMMO.NET.Objects.Characters
         /// Prospecting increases the chances of getting better loot.
         /// </summary>
         public int Prospecting { get; }
+        public int Initiative { get; }
+        public int Threat { get; }
 
         /// <summary>
         /// Fire attack.
@@ -365,6 +373,7 @@ namespace ArtifactsMMO.NET.Objects.Characters
         /// % Air resistance. Reduces air attack.
         /// </summary>
         public int ResAir { get; }
+        public IEnumerable<StorageEffect> Effects { get; }
 
         /// <summary>
         /// Character x coordinate.
@@ -375,6 +384,8 @@ namespace ArtifactsMMO.NET.Objects.Characters
         /// Character y coordinate.
         /// </summary>
         public int Y { get; }
+        public Layer Layer { get; }
+        public int MapId { get; }
 
         /// <summary>
         /// Cooldown in seconds.

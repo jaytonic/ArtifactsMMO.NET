@@ -1,6 +1,8 @@
 ﻿using ArtifactsMMO.NET.Exceptions;
+using ArtifactsMMO.NET.Objects.Items;
 using ArtifactsMMO.NET.Requests;
 using ArtifactsMMO.NET.Validators.Static;
+using System.Linq;
 
 namespace ArtifactsMMO.NET.Validators
 {
@@ -8,14 +10,22 @@ namespace ArtifactsMMO.NET.Validators
     {
         public void Validate(DepositBankRequest depositBankRequest)
         {
-            if (!AlphaNumericUnderscoreHyphenValidator.IsValid(depositBankRequest.Code))
-            {
-                throw new ItemCodeHasDisallowedCharacters();
-            }
-
-            if (!QuantityValidator.IsValid(depositBankRequest.Quantity))
+            if (depositBankRequest.Items.Count() == 0)
             {
                 throw new DisallowedQuantity();
+            }
+
+            foreach (SimpleItem item in depositBankRequest.Items)
+            {
+                if (!AlphaNumericUnderscoreHyphenValidator.IsValid(item.Code))
+                {
+                    throw new ItemCodeHasDisallowedCharacters();
+                }
+
+                if (!QuantityValidator.IsValid(item.Quantity))
+                {
+                    throw new DisallowedQuantity();
+                }
             }
         }
     }

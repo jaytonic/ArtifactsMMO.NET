@@ -10,10 +10,11 @@ namespace ArtifactsMMO.NET.Objects.Effects
         internal SimpleEffect() { }
 
         [JsonConstructor]
-        internal SimpleEffect(string code, int value)
+        internal SimpleEffect(string code, int value, string description)
         {
             Code = code;
             Value = value;
+            Description = description;
         }
 
         /// <summary>
@@ -25,5 +26,6 @@ namespace ArtifactsMMO.NET.Objects.Effects
         /// Effect value.
         /// </summary>
         public int Value { get; }
+        public string Description { get; }
     }
 }

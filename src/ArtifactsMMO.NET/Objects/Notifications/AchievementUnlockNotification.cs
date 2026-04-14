@@ -7,12 +7,8 @@ namespace ArtifactsMMO.NET.Objects.Notifications
     /// <summary>
     /// Notification about an achievement unlock
     /// </summary>
-    public class AchievementUnlockNotification : ServerNotification
+    public class AchievementUnlockNotification : ServerNotification<Achievement>
     {
-        /// <summary>
-        /// The achievement
-        /// </summary>
-        public Achievement Data { get; }
 
         /// <summary>
         /// Construct a new event removed notification
@@ -21,9 +17,8 @@ namespace ArtifactsMMO.NET.Objects.Notifications
         /// <param name="data">The achievement</param>
         [JsonConstructor]
         public AchievementUnlockNotification(NotificationType type, Achievement data)
-            : base(type)
+            : base(type, data)
         {
-            Data = data;
         }
     }
 }

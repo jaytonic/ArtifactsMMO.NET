@@ -5,7 +5,7 @@ using System.Text.Json.Nodes;
 
 namespace ArtifactsMMO.NET.Endpoints.Notifications.MessageFactory
 {
-    internal class EventRemovedMessageFactory : IMessageFactory<ServerNotification>
+    internal class EventRemovedMessageFactory : IMessageFactory<EventRemovedNotification>
     {
         public bool IsApplicable(string messageText)
         {
@@ -13,7 +13,7 @@ namespace ArtifactsMMO.NET.Endpoints.Notifications.MessageFactory
             return jsonNode["type"]?.Deserialize<string>() == "event_removed";
         }
 
-        public ServerNotification Deserialize(string messageText, JsonSerializerOptions jsonSerializerOptions)
+        public EventRemovedNotification Deserialize(string messageText, JsonSerializerOptions jsonSerializerOptions)
         {
             EventRemovedNotification notification = JsonSerializer.Deserialize<EventRemovedNotification>(messageText, jsonSerializerOptions);
             return notification;

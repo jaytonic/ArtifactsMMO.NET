@@ -13,49 +13,22 @@ namespace ArtifactsMMO.NET.Objects.MyCharacter.Fight
         internal Fight() { }
 
         [JsonConstructor]
-        internal Fight(int xp, int gold, IReadOnlyCollection<Drop> drops, int turns,
-            BlockedHits monsterBlockedHits, BlockedHits playerBlockedHits, IReadOnlyCollection<string> logs,
-            FightResult result)
+        internal Fight(FightResult result, int turns, string opponent, IReadOnlyCollection<string> logs,
+            IEnumerable<CharacterMultiFightResult> characters)
         {
-            Xp = xp;
-            Gold = gold;
-            Drops = drops;
             Turns = turns;
-            MonsterBlockedHits = monsterBlockedHits;
-            PlayerBlockedHits = playerBlockedHits;
+            Opponent = opponent;
             Logs = logs;
             Result = result;
+            Characters = characters;
         }
-
-        /// <summary>
-        /// The amount of xp gained by the fight.
-        /// </summary>
-        public int Xp { get; }
-
-        /// <summary>
-        /// The amount of gold gained by the fight.
-        /// </summary>
-        public int Gold { get; }
-
-        /// <summary>
-        /// The items dropped by the fight.
-        /// </summary>
-        public IReadOnlyCollection<Drop> Drops { get; }
 
         /// <summary>
         /// Numbers of the turns of the combat.
         /// </summary>
         public int Turns { get; }
+        public string Opponent { get; }
 
-        /// <summary>
-        /// The amount of blocked hits by the monster.
-        /// </summary>
-        public BlockedHits MonsterBlockedHits { get; }
-
-        /// <summary>
-        /// The amount of blocked hits by the player.
-        /// </summary>
-        public BlockedHits PlayerBlockedHits { get; }
 
         /// <summary>
         /// The fight logs.
@@ -66,5 +39,6 @@ namespace ArtifactsMMO.NET.Objects.MyCharacter.Fight
         /// The result of the fight.
         /// </summary>
         public FightResult Result { get; }
+        public IEnumerable<CharacterMultiFightResult> Characters { get; }
     }
 }
